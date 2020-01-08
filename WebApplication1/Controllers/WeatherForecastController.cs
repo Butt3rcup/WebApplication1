@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using WebApplication1.DTO;
+using WebApplication1.Model;
 
 namespace WebApplication1.Controllers
 {
@@ -34,6 +37,16 @@ namespace WebApplication1.Controllers
                 Summary = Summaries[rng.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+
+
+        public void Test()
+        {
+
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Person, PersonDto>().ForMember(p => p.Address, e=> e.MapFrom(p => p.Address.Province + p.Address.City + p.Address.Street)));
+
+             
+
         }
     }
 }
