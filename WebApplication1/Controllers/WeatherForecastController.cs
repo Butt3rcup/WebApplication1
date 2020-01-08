@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -39,14 +38,9 @@ namespace WebApplication1.Controllers
             .ToArray();
         }
 
-
         public void Test()
         {
-
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<Person, PersonDto>().ForMember(p => p.Address, e=> e.MapFrom(p => p.Address.Province + p.Address.City + p.Address.Street)));
-
-             
-
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Person, PersonDto>().ForMember(p => p.Address, e => e.MapFrom(p => p.Address.Province + p.Address.City + p.Address.Street)));
         }
     }
 }
