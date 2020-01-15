@@ -2,17 +2,13 @@
 
 namespace WebApplication1.Service
 {
+    
     /// <summary>
-    ///
+    /// UserInfo
     /// </summary>
-    ///
-
     public class UserInfoService : IUserInfoService
     {
-        /// <summary>
-        ///
-        /// </summary>
-        /// <returns></returns>
+        
 
         public string[] GetUsers()
         {

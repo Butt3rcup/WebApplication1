@@ -1,10 +1,14 @@
 ﻿using System.Reflection;
+using System.Text;
+using System.Text.Encodings.Web;
+using System.Text.Unicode;
 using Autofac;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WebApplication1.Extends;
 
 namespace WebApplication1
 {
@@ -22,6 +26,10 @@ namespace WebApplication1
         {
             services.AddControllers().AddJsonOptions(options =>
             {
+                 
+                options.JsonSerializerOptions.Encoder = JavaScriptEncoder.Create(allowedRanges: UnicodeRanges.All);
+                options.JsonSerializerOptions.Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping;
+                options.JsonSerializerOptions.Converters.Add(new JsonDateTimeConvert());
             });
         }
 

@@ -1,10 +1,6 @@
 ﻿namespace WebApplication1.InterFace
 {
-    /// <summary>
-    ///
-    /// </summary>
-    ///
-
+    /// <summary>User</summary>
     public interface IUserInfoService
     {
         /// <summary>
