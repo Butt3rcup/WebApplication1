@@ -9,6 +9,8 @@ namespace WebApplication1.Controllers
     {
         private readonly IUserInfoService _UserInfoService;
 
+
+
         public DefaultController(IUserInfoService userInfoService)
         {
             this._UserInfoService = userInfoService;
