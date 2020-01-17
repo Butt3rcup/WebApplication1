@@ -1,4 +1,6 @@
-﻿namespace WebApplication1.InterFace
+﻿using System.Threading.Tasks;
+
+namespace WebApplication1.InterFace
 {
     /// <summary>User</summary>
     public interface IUserInfoService
@@ -8,6 +10,6 @@
         /// </summary>
         /// <returns></returns>
 
-        string[] GetUsers();
+          Task<string[]> GetUsers();
     }
 }

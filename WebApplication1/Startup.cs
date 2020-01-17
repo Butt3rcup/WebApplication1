@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Unicode;
@@ -9,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WebApplication1.Extends;
+using WebApplication1.Http;
 
 namespace WebApplication1
 {
@@ -31,6 +33,8 @@ namespace WebApplication1
                 options.JsonSerializerOptions.Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping;
                 options.JsonSerializerOptions.Converters.Add(new JsonDateTimeConvert());
             });
+
+            services.AddHttpClient<HttpClienService>().SetHandlerLifetime(TimeSpan.FromMinutes(2));
         }
 
         public void ConfigureContainer(ContainerBuilder containerBuilder)

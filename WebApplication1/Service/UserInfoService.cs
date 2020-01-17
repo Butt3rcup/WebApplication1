@@ -1,18 +1,35 @@
-﻿using WebApplication1.InterFace;
+﻿using System;
+using System.Threading.Tasks;
+using Microsoft.CodeAnalysis.CSharp;
+using WebApplication1.InterFace;
 
 namespace WebApplication1.Service
 {
-    
+
     /// <summary>
     /// UserInfo
     /// </summary>
     public class UserInfoService : IUserInfoService
     {
-        
 
-        public string[] GetUsers()
+
+
+
+
+        public async Task<string[]> GetUsers()
         {
-            return new[] { "张三", "李四" };
+
+
+
+            return await Task.Run(getList);
+
+        }
+
+
+
+        private string[] getList()
+        {
+            return new[] {"张三", "李四", $"{DateTime.Now}.{DateTime.Now.Millisecond}"};
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Net;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
@@ -16,16 +18,25 @@ namespace WebApplication1
             Host.CreateDefaultBuilder(args)
                 
                 
+                
                 .UseServiceProviderFactory(new AutofacServiceProviderFactory())
-                .ConfigureHostConfiguration(builder =>
-                {
-                    Console.WriteLine("builder");
-                })
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                
+                
                 
                 .ConfigureWebHostDefaults(webBuilder =>
 
                 {
                     webBuilder.UseStartup<Startup>();
+
+
+                    //webBuilder.UseKestrel((context, options) =>
+                    //{
+
+                    //    options.Listen(IPAddress.Any, 5000);
+
+
+                    //});
                 });
     }
 }
