@@ -39,6 +39,7 @@ namespace WebApplication1.Controllers
 
             var temp = await _UserInfoService.GetUsers();
 
+           temp.AsSpan();
             var jsonData = new { code = 200, meg = "ok", date = temp };
 
             var json = new JsonResult(jsonData);
@@ -53,8 +54,16 @@ namespace WebApplication1.Controllers
 
         public async Task<IActionResult> Get1()
         {
-            Dictionary<string, string> dictionary = new Dictionary<string, string>();
-            dictionary.Add("name", "as");
+
+
+
+
+
+
+
+            Dictionary<string, string> dictionary = new Dictionary<string, string> {{"name", "as"}};
+
+
 
 
 
@@ -66,6 +75,10 @@ namespace WebApplication1.Controllers
 
             return Ok("200");
         }
+
+
+
+       
 
     }
 }

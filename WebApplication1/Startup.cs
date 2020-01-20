@@ -6,9 +6,11 @@ using System.Text.Unicode;
 using Autofac;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WebApplication1.DbContext;
 using WebApplication1.Extends;
 using WebApplication1.Http;
 
@@ -35,6 +37,9 @@ namespace WebApplication1
             });
 
             services.AddHttpClient<HttpClienService>().SetHandlerLifetime(TimeSpan.FromMinutes(2));
+
+            services.AddDbContext<RazorPagesMovieContext>(options =>  options.UseMySql(Configuration.GetConnectionString("RazorPagesMovieContext")));
+
         }
 
         public void ConfigureContainer(ContainerBuilder containerBuilder)
