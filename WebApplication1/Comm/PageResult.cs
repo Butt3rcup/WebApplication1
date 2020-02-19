@@ -6,7 +6,7 @@ namespace WebApplication1.Comm
     /// 通用返回类型
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class PageResult<T>
+    public class PageResult<T>  where T : class
     {
         public int TotalCount { get; set; }
         public int PageIndex { get; set; }

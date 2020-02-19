@@ -32,8 +32,8 @@ namespace WebApplication1.Http
 
             }
             Client.DefaultRequestHeaders
-       .Accept
-       .Add(new MediaTypeWithQualityHeaderValue("application/json"));//ACCEPT header
+               .Accept
+               .Add(new MediaTypeWithQualityHeaderValue("application/json"));//ACCEPT header
             //拼接地址
             if (parameters != null)
             {
@@ -41,18 +41,18 @@ namespace WebApplication1.Http
                 requestUri = string.Concat(requestUri, '?', strParam);
             }
             Client.BaseAddress = new Uri(requestUri);
-            
 
-            Task<string> stringAsync = Client.GetStringAsync(requestUri);
 
-            return stringAsync.Result;
+            string stringAsync = await Client.GetStringAsync(requestUri);
+
+            return stringAsync;
         }
 
 
 
         public void T(string url)
         {
-            HttpClient client = new HttpClient {BaseAddress = new Uri(url)};
+            HttpClient client = new HttpClient { BaseAddress = new Uri(url) };
             client.DefaultRequestHeaders
                   .Accept
                   .Add(new MediaTypeWithQualityHeaderValue("application/json"));//ACCEPT header
@@ -78,7 +78,7 @@ namespace WebApplication1.Http
             var Client = IHttpClientFactory.CreateClient();
 
 
-            string result = Client.GetStringAsync(url).Result;
+            string result = await Client.GetStringAsync(url);
             return result;
         }
     }
