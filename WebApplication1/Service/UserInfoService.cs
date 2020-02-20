@@ -29,7 +29,7 @@ namespace WebApplication1.Service
 
         private string[] getList()
         {
-            return new[] {"张三", "李四", "王五1",$"{DateTime.Now}.{DateTime.Now.Millisecond}"};
+            return new[] {"张三", "李四", "王五1","赵六",$"{DateTime.Now}.{DateTime.Now.Millisecond}"};
         }
     }
 }
